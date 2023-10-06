@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/agregarItems.css">
+</head>
+
+<body>
+    <main>
+        <!-- <form "> -->
+        <fieldset style="width: fit-content; margin-bottom: 20px;">
+            <legend>Add item:</legend>
+            <button class="push" onclick="pushItem()">push</button>
+            <button class="push" onclick="unshiftItem()">unshift</button>
+            <button class="push" onclick="insertAtItem()">insert at</button>
+            <input type="number" name="" id="indexOfAdd" placeholder="Default Index 0">
+        </fieldset>
+        <fieldset style="width: fit-content;"">
+                <legend>Remove item:</legend>
+                <button class=" push" onclick="popItem()">pop</button>
+            <button class="push" onclick="shiftItem()">shift</button>
+            <button class="push" onclick="removeAtItem()">remove at</button>
+            <input type="number" name="" id="indexofRemove" placeholder="Default Index 0">
+        </fieldset>
+        <h2 class="arrayItems" style="font-family: Arial, Helvetica, sans-serif;">[ ]</h2>
+        <script src="js/EjercicioAgregarItems.js"></script>
+    </main>
+</body>
+
+</html>

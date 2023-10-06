@@ -1,0 +1,4 @@
+
+function functionAlert(){
+    alert("Mario");
+}

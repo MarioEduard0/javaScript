@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100&display=swap');
+
+* {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 24, 24);
+    color: #ffdbb2;
+
+
+    width: 100%;
+    height: auto;
+}
+
+header {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    font-size: 32px;
+    border-bottom: 3px solid #efdcc6;
+    outline: 1px solid #cab49b;
+    outline-offset: 5px;
+    margin-bottom: 50px;
+
+    & h2 {
+
+        font-family: 'Josefin Slab', serif;
+        color: #f9f1e8;
+        text-align: center;
+        word-spacing: 50px;
+        letter-spacing: 5px;
+        background-color: black;
+    }
+}
+
+
+
+.scoreBoard {
+    display: flex;
+    border: 1px solid #cab49b;
+    outline: 3px solid #cab49b;
+    outline-offset: 6px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.user,
+.machine {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(15, 15, 15);
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 10px;
+    border: 1px solid #cab49b;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.scores {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px solid rgb(255, 230, 197);
+    border-top: 2px solid rgb(255, 230, 197);
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.machineResult {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.gameOptions {
+    width: auto;
+    height: auto;
+}
+
+.gameOptions {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+}
+
+.gameOptions>img {
+    width: 100px;
+}
+
+.gameOptions>img:hover {
+    background-color: white;
+    border-radius: 40%;
+    -webkit-border-radius: 40%;
+    -moz-border-radius: 40%;
+    -ms-border-radius: 40%;
+    -o-border-radius: 40%;
+    transform: scale(20px);
+    -webkit-transform: scale(20px);
+    -moz-transform: scale(20px);
+    -ms-transform: scale(20px);
+    -o-transform: scale(20px);
+}
+
+.iconos {
+    padding: 15px;
+    border: 2px solid rgb(255, 230, 197);
+}
+
+.iconos,
+.iconos>img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #998f84;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px
+}
+
+.u-win,
+.u-win>img {
+    background-color: rgb(57, 237, 78);
+
+}
+
+.u-lose,
+.u-lose>img {
+    background-color: rgb(237, 57, 57);
+}
+
+.u-tie,
+.u-tie>img {
+    background-color: rgb(236, 236, 236);
+}
+
+
+footer {
+    width: 100%;
+    height: auto;
+}
+
+.restart {
+    background-color:
+        black;
+    color: #efdcc6;
+    font-family: 'Josefin Slab', sans-serif;
+    font-size: 34px;
+    letter-spacing: 10px;
+    bottom: 0px;
+    margin-top: 50px;
+    padding: 10px 43% 10px 43%;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+
+
+@media (width > 720px) {
+
+
+
+    .scoreBoard {
+        flex-direction: row;
+        gap: 30px;
+        width: auto;
+        height: 35vh;
+    }
+
+    .gameOptions {
+        flex-direction: row;
+    }
+}
+
+@media (width < 720px) {
+    header>h2 {
+        word-spacing: 0px;
+    }
+
+    .scoreBoard {
+        flex-direction: column;
+        gap: 30px;
+        width: auto;
+        height: 35vh;
+    }
+
+    .iconos {
+        margin-bottom: 20px;
+    }
+}

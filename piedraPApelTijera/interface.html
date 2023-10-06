@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="view.css">
+    <title>.</title>
+</head>
+
+<body>
+
+    <header>
+        <h2>Piedra papel tijera</h2>
+    </header>
+
+    <main>
+
+        <div class="scoreBoard">
+            <div class="user">Usuario</div>
+            <div class="scores" id="scoreResume">0 - 0</div>
+            <div class="machine">Ordenador</div>
+        </div>
+        <div class="machineResult" id="machineOption">La maquina ha sacado: </div>
+
+
+        <div class="gameOptions">
+            <button class="iconos" id="piedra">
+                <img src="img/stone.png" alt="Piedra" width="100px">
+            </button>
+            <button class="iconos" id="papel">
+                <img src="img/document.png" alt="Papel" width="100px">
+            </button>
+            <button class="iconos" id="tijeras">
+                <img src="img/scissors.png" alt="Tijeras" width="100px">
+            </button>
+        </div>
+
+    </main>
+
+    <footer>
+        <button class="restart" id="restart-game">restart</button>
+    </footer>
+
+    <script src="model.js"></script>
+
+</body>
+
+</html>
