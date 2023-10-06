@@ -3,12 +3,10 @@ const PLAYER_OPTION_PAPEL = document.getElementById("papel");
 const PLAYER_OPTION_TIJERAS = document.getElementById("tijeras");
 const GAME_RESTART = document.getElementById("restart-game");
 
-
 const MACHINE_OPTION_STRING = document.getElementById("machineOption");
 const RESULT_STRING = document.getElementById("scoreResume");
 
 const DEFAULT_MACHINE_STRING = "La máquina ha sacado: ";
-
 const GAME_RESULT_TIE = "empate :|";
 const GAME_RESULT_WIN = "ganaste :)";
 const GAME_RESULT_LOSE = "perdiste :(";
@@ -38,15 +36,25 @@ function setElementsToListener() {
     GAME_RESTART.onclick = function () {
         restartGame();
     }
-
-
 }
 
-function restartGame() {
-    playerResult = 0;
-    machineResult = 0;
-    RESULT_STRING.textContent = playerResult + " - " + machineResult;
+function randomOptionMachine() {
+    var result = "";
+    var random = Math.floor(Math.random() * 3) + 1;
+    switch (random) {
+        case 1:
+            result = "piedra";
+            break;
+        case 2:
+            result = "papel";
+            break;
+        case 3:
+            result = "tijeras";
+            break;
+    }
+    return result;
 }
+
 
 function playGame(playerOption) {
     gameRound++;
@@ -79,10 +87,7 @@ function playGame(playerOption) {
         endGame();
 
     }
-
-
 }
-
 
 function endGame() {
     if (playerResult == 3) {
@@ -92,6 +97,12 @@ function endGame() {
         restartGame();
         MACHINE_OPTION_STRING.textContent = "Vaya... has peridido :("
     }
+}
+
+function restartGame() {
+    playerResult = 0;
+    machineResult = 0;
+    RESULT_STRING.textContent = playerResult + " - " + machineResult;
 }
 
 function setresultColorButton(id, win, tie) {
@@ -114,21 +125,4 @@ function setresultColorButton(id, win, tie) {
             buttonClassToggle.classList.remove("u-tie");
         }
     }, 1000);
-}
-
-function randomOptionMachine() {
-    var result = "";
-    var random = Math.floor(Math.random() * 3) + 1;
-    switch (random) {
-        case 1:
-            result = "piedra";
-            break;
-        case 2:
-            result = "papel";
-            break;
-        case 3:
-            result = "tijeras";
-            break;
-    }
-    return result;
 }
