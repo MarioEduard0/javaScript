@@ -6,10 +6,6 @@ body {
    
 }
 
-*>img{
-    position: relative;
-    object-fit: cover;
-}
 
 .contenedor {
   display: flex;
