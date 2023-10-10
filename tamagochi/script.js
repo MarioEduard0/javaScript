@@ -113,7 +113,7 @@ function sleepButton(value) {
 
 function actionButton(value, progress, buttons) {
     progress.value += value;
-    PROGRESS_SLEEP.value -= value / 5;
+    PROGRESS_SLEEP.value -= value / 2;
 
     for (let button of buttons) {
         button.disabled = true;
@@ -126,3 +126,115 @@ function actionButton(value, progress, buttons) {
 
 reducirBarra();
 setButtonToListener();
+
+
+/**
+ * 
+ * 
+function setButtonToListener() {
+    BUTTON_EAT_1.onclick = function () {
+        eatButton(ICE_CREAM_VALUE);
+    }
+    BUTTON_EAT_2.onclick = function () {
+        eatButton(CARROT_VALUE);
+
+    }
+    BUTTON_EAT_3.onclick = function () {
+        eatButton(CHIKEN_VALUE);
+    }
+
+
+    BUTTON_PLAY_1.onclick = function () {
+        playButton(VIDEOGAMES_VALUE);
+    }
+    BUTTON_PLAY_2.onclick = function () {
+        playButton(SPORTS_VALUE);
+    }
+    BUTTON_PLAY_3.onclick = function () {
+        playButton(CHESS_VALUE);
+    }
+
+
+    BUTTON_FIGHT_1.onclick = function () {
+        fightButton(FIGHT_VALUE);
+    }
+    BUTTON_FIGHT_2.onclick = function () {
+        fightButton(RUNNING_VALUE);
+    }
+
+
+    BUTTON_SLEEP_1.onclick = function () {
+        sleepButton(NAP_VALUE);
+    }
+    BUTTON_SLEEP_2.onclick = function () {
+        sleepButton(SLEEP_VALUE);
+    }
+
+
+}
+
+function eatButton(value) {
+    PROGRESS_EAT.value = (PROGRESS_EAT.value + value);
+    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
+
+    BUTTON_EAT_1.disabled = true;
+    BUTTON_EAT_2.disabled = true;
+    BUTTON_EAT_3.disabled = true;
+    setInterval(enableEatButtons, 2000);
+}
+
+
+function enableEatButtons() {
+    BUTTON_EAT_1.disabled = false;
+    BUTTON_EAT_2.disabled = false;
+    BUTTON_EAT_3.disabled = false;
+}
+
+function fightButton(value) {
+    PROGRESS_FIGHT.value = (PROGRESS_FIGHT.value + value);
+    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
+
+    BUTTON_FIGHT_1.disabled = true;
+    BUTTON_FIGHT_2.disabled = true;
+    setInterval(enableFightButtons, 2000);
+}
+
+
+function enableFightButtons() {
+    BUTTON_FIGHT_1.disabled = false;
+    BUTTON_FIGHT_2.disabled = false;
+}
+
+function playButton(value) {
+    PROGRESS_PLAY.value = (PROGRESS_PLAY.value + value);
+    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
+
+    BUTTON_PLAY_1.disabled = true;
+    BUTTON_PLAY_2.disabled = true;
+    BUTTON_PLAY_3.disabled = true;
+
+    setInterval(enablePlayButtons, 2000);
+}
+
+function enablePlayButtons() {
+    BUTTON_PLAY_1.disabled = false;
+    BUTTON_PLAY_2.disabled = false;
+    BUTTON_PLAY_3.disabled = false;
+
+}
+
+function sleepButton(value) {
+    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value + value);
+    PROGRESS_EAT.value = (PROGRESS_EAT.value - (value / 2));
+    PROGRESS_FIGHT.value = (PROGRESS_FIGHT.value - (value / 3));
+
+    BUTTON_SLEEP_1.disabled = true;
+    BUTTON_SLEEP_2.disabled = true;
+    setInterval(enableSleepButtons, 2000);
+}
+
+function enableSleepButtons() {
+    BUTTON_SLEEP_2.disabled = false;
+    BUTTON_SLEEP_2.disabled = false;
+}
+ */
