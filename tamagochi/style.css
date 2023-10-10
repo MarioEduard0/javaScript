@@ -10,14 +10,14 @@ body {
     width: 100%;
     height: auto;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1frt;
+    grid-template-rows: 1fr 1fr;
 }
 
 .leftContent {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 50vh;
+    height: auto;
 }
 
 .rightContent {
@@ -25,7 +25,7 @@ body {
     flex-direction: column;
     align-items: end;
     width: 100%;
-    height: 50vh;
+    height: auto;
 }
 
 
@@ -100,7 +100,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background-color: rgb(255, 3, 11);
+    background-color: rgb(70, 255, 3);
     border: 5px solid black;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -108,6 +108,19 @@ progress::-webkit-progress-value {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
+progress[data-step="100"]::-webkit-progress-value {
+    background: greenyellow
+}
+
+progress[data-step="60"]::-webkit-progress-value {
+    background-color: yellow;
+}
+
+progress[data-step="30"]::-webkit-progress-value {
+    background-color: red;
+}
+
 
 [class*=progress-level] {
     margin-top: 10px;
@@ -156,4 +169,25 @@ progress::-webkit-progress-value {
 
 button>img {
     width: 23px;
+}
+
+button:active {
+    background-color: rgba(255, 255, 255, 0.548);
+    translate: 0px 2px;
+    scale: 0.85;
+}
+
+.heart-box {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.632);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.heart-box>img {
+    width: 20px;
 }

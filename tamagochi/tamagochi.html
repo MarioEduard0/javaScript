@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,26 +13,24 @@
         <div class="eatContent leftContent">
             <div class="content">
                 <div class="buttonGroupLeft">
-                    <button class="food1"><img src="img/ice-cream.png" alt=""></button>
-                    <button class="food2"><img src="img/carrot.png" alt=""></button>
-                    <button class="food3"><img src="img/leg.png" alt=""></button>
+                    <button class="food" id="food-1"><img src="img/ice-cream.png" alt=""></button>
+                    <button class="food" id="food-2"><img src="img/carrot.png" alt=""></button>
+                    <button class="food" id="food-3"><img src="img/leg.png" alt=""></button>
                 </div>
-                <progress class="eat-progress" value="50" max="100"></progress>
-                <p class="eat-progress-level">0% full</p>
+                <progress class="eat-progress" id="eat-progress" value="100" max="100"></progress>
+                <p class="eat-progress-level">0% Full</p>
                 <p class="eat-content-type-top">eat</p>
             </div>
-
         </div>
         <div class="playContainer rightContent">
             <div class="content">
-                <div class="buttonGroupRight ">
-                    <button class="play1"><img src="img/knight.png" alt=""></button>
-                    <button class="play2"><img src="img/rugby-ball.png" alt=""></button>
-                    <button class="play3"><img src="img/gamepad-console.png" alt=""></button>
+                <div class="buttonGroupRight">
+                    <button class="play" id="play-1"><img src="img/knight.png" alt=""></button>
+                    <button class="play" id="play-2"><img src="img/rugby-ball.png" alt=""></button>
+                    <button class="play" id="play-3"><img src="img/gamepad-console.png" alt=""></button>
                 </div>
-
-                <progress class="play-progress" value="10" max="100"></progress>
-                <p class="play-progress-level">0% full</p>
+                <progress class="play-progress" id="play-progress" value="100" max="100"></progress>
+                <p class="play-progress-level">0% Fun</p>
                 <p class="play-content-type-top">play</p>
             </div>
         </div>
@@ -41,33 +39,41 @@
             <div class="content">
                 <p class="fight-content-type-bot">fight</p>
                 <div class="buttonGroupLeft">
-                    <button class="fight1"><img src="img/raise-hand.png" alt=""></button>
-                    <button class="fight2"><img src="img/run.png" alt=""></button>
+                    <button class="fight" id="fight-1"><img src="img/raise-hand.png" alt=""></button>
+                    <button class="fight" id="fight-2"><img src="img/run.png" alt=""></button>
                 </div>
-
-                <progress class="fight-progress" value="10" max="100"></progress>
-                <p class="fight-progress-level">0% full</p>
+                <progress class="fight-progress" id="fight-progress" value="100" max="100"></progress>
+                <p class="fight-progress-level">0% Strengh</p>
             </div>
 
         </div>
-        <div class="sleepContent">
+        <div class="sleepContent ">
             <div class="content">
                 <p class="sleep-content-type-bot">sleep</p>
                 <div class="buttonGroupRight">
-                    <button class="sleep"><img src="img/cloud.png" alt=""></button>
-                    <button class="wake-up"><img src="img/sleeping.png" alt=""></button>
+                    <button class="sleep" id="sleep-1"><img src="img/cloud.png" alt=""></button>
+                    <button class="sleep" id="sleep-2"><img src="img/sleeping.png" alt=""></button>
                 </div>
-                <progress class="sleep-progress" value="10" max="100"></progress>
-                <p class="sleep-progress-level">0% full</p>
+                <progress class="sleep-progress" id="sleep-progress" value="100" max="100"></progress>
+                <p class="sleep-progress-level">0% Energy</p>
             </div>
 
         </div>
     </div>
 
     <div class="tamagochi">
-        <p>Jose</p>
+        <p>Jose Moreno</p>
         <img src="img/crying-cat.gif" alt="">
+        <div class="heart-box">
+            <img src="img/corazon.png" alt="" id="heart1">
+            <img src="img/corazon.png" alt="" id="heart2">
+            <img src="img/corazon.png" alt="" id="heart3">
+        </div>
+        <progress class="happiness-progress" id="happiness-progress" value="100" max="100"></progress>
+        <p class="happiness-progress-level">Happiness 0%</p>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
