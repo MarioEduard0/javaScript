@@ -4,6 +4,21 @@ const PROGRESS_FIGHT = document.getElementById("fight-progress");
 const PROGRESS_SLEEP = document.getElementById("sleep-progress");
 const PROGRESS_HAPPINESS = document.getElementById("happiness-progress");
 
+const LABEL_PROGRESS_EAT = document.getElementById("eat-progress-level");
+const LABEL_PROGRESS_PLAY = document.getElementById("play-progress-level");
+const LABEL_PROGRESS_FIGHT = document.getElementById("fight-progress-level");
+const LABEL_PROGRESS_SLEEP = document.getElementById("sleep-progress-level");
+const LABEL_PROGRESS_HAPPY = document.getElementById("happiness-progress-level");
+
+const LABEL_NAME = document.getElementById("tamagochi-name");
+
+
+
+const IMG_TAMAGOCHI = document.getElementById("tamagochi");
+
+const HAPPY_CAT = "img/happy-cat.gif"
+const SAD_CAT = "img/crying-cat.gif"
+
 const BUTTON_EAT_1 = document.getElementById("food-1");
 const BUTTON_EAT_2 = document.getElementById("food-2");
 const BUTTON_EAT_3 = document.getElementById("food-3");
@@ -25,31 +40,81 @@ const RUNNING_VALUE = 20;
 
 const BUTTON_SLEEP_1 = document.getElementById("sleep-1");
 const BUTTON_SLEEP_2 = document.getElementById("sleep-2");
-const NAP_VALUE = 20;
-const SLEEP_VALUE = 40;
+const NAP_VALUE = 40;
+const SLEEP_VALUE = 60;
 
-const hungryState = 0.3;
-const boringState = 1.5;
-const tiredState = 1;
-const asleepState = 0.3;
-const time_progress_sleep = 2000;
+const hungryState = 0.125;
+const boringState = 0.25;
+const tiredState = 0.1875;
+const asleepState = 0.0625;
+
+
+var catIsHappy = true;
+
+const time_progress_sleep = 1;
+const BUTTON_TÇIME_DISABLED = 2000;
 var alive = true;
 
 function reducirBarra() {
-    if (alive) {
-        setInterval(gameLogic, time_progress_sleep);
-    }
+    setInterval(gameLogic, time_progress_sleep);
+
 }
 
 function gameLogic() {
-    reducir(PROGRESS_EAT, hungryState);
-    reducir(PROGRESS_FIGHT, tiredState);
-    reducir(PROGRESS_PLAY, boringState);
-    reducir(PROGRESS_SLEEP, asleepState);
+
+    if (alive) {
+        reducir(PROGRESS_EAT, hungryState);
+        reducir(PROGRESS_FIGHT, tiredState);
+        reducir(PROGRESS_PLAY, boringState);
+        reducir(PROGRESS_SLEEP, asleepState);
+    }
+    catStates();
+    labelPercentage(LABEL_PROGRESS_EAT, (Math.round(PROGRESS_EAT.value) + "% Full"));
+    labelPercentage(LABEL_PROGRESS_PLAY, (Math.round(PROGRESS_PLAY.value) + "% Fun"));
+    labelPercentage(LABEL_PROGRESS_FIGHT, (Math.round(PROGRESS_FIGHT.value) + "% Strengh"));
+    labelPercentage(LABEL_PROGRESS_SLEEP, (Math.round(PROGRESS_SLEEP.value) + "% Energy"));
+    labelPercentage(LABEL_PROGRESS_HAPPY, (Math.round(PROGRESS_HAPPINESS.value) + "% Happiness"));
+
+
 }
+
+function labelPercentage(label_progress, string) {
+    label_progress.textContent = string;
+}
+
+function catStates() {
+    if (PROGRESS_HAPPINESS.value <= 50 && catIsHappy) {
+        IMG_TAMAGOCHI.src = SAD_CAT;
+        catIsHappy = false;
+    } else if (PROGRESS_HAPPINESS.value > 50 && !catIsHappy) {
+        IMG_TAMAGOCHI.src = HAPPY_CAT;
+        catIsHappy = true;
+    }
+
+    if (PROGRESS_HAPPINESS.value == 0) {
+        const heartBox = document.querySelector('.heart-box');
+        const firstImage = heartBox.querySelectorAll('img');
+        if (typeof firstImage[0] !== "undefined") {
+            firstImage[0].remove();
+            PROGRESS_HAPPINESS.value += 100;
+            PROGRESS_EAT.value += 100;
+            PROGRESS_FIGHT.value += 100;
+            PROGRESS_SLEEP.value += 100;
+            PROGRESS_PLAY.value += 100;
+        } else {
+            alive = false;
+            LABEL_NAME.textContent = "Game OVer"
+        }
+    }
+
+}
+
+
 
 function reducir(progress_bar, estado) {
     progress_bar.value -= estado;
+    PROGRESS_HAPPINESS.value -= (estado / 9);
+
     if (progress_bar.value <= 100) {
         progress_bar.dataset.step = 100;
     }
@@ -59,7 +124,10 @@ function reducir(progress_bar, estado) {
     if (progress_bar.value <= 30) {
         progress_bar.dataset.step = 30;
     }
+
+
 }
+
 
 function setButtonToListener() {
     configureButtons(BUTTON_EAT_1, eatButton, ICE_CREAM_VALUE);
@@ -79,7 +147,9 @@ function setButtonToListener() {
 
 function configureButtons(button, action, value) {
     button.onclick = function () {
-        action(value);
+        if (alive) {
+            action(value);
+        }
     };
 }
 
@@ -113,7 +183,25 @@ function sleepButton(value) {
 
 function actionButton(value, progress, buttons) {
     progress.value += value;
-    PROGRESS_SLEEP.value -= value / 2;
+    PROGRESS_HAPPINESS.value += (value / 2);
+
+
+    if (progress == PROGRESS_EAT) {
+        PROGRESS_SLEEP.value -= value / 4;
+    }
+    if (progress == PROGRESS_PLAY) {
+        PROGRESS_SLEEP.value -= value / 2;
+    }
+    if (progress == PROGRESS_FIGHT) {
+        PROGRESS_SLEEP.value -= value - (value / 10);
+    }
+
+    if (progress == PROGRESS_SLEEP) {
+        PROGRESS_PLAY.value -= value / 5;
+        PROGRESS_FIGHT.value -= value / 3;
+        PROGRESS_EAT.value -= value - (value / 5);
+
+    }
 
     for (let button of buttons) {
         button.disabled = true;
@@ -121,120 +209,8 @@ function actionButton(value, progress, buttons) {
 
     setTimeout(function () {
         enableActionButtons(buttons);
-    }, 2000);
+    }, BUTTON_TÇIME_DISABLED);
 }
 
 reducirBarra();
 setButtonToListener();
-
-
-/**
- * 
- * 
-function setButtonToListener() {
-    BUTTON_EAT_1.onclick = function () {
-        eatButton(ICE_CREAM_VALUE);
-    }
-    BUTTON_EAT_2.onclick = function () {
-        eatButton(CARROT_VALUE);
-
-    }
-    BUTTON_EAT_3.onclick = function () {
-        eatButton(CHIKEN_VALUE);
-    }
-
-
-    BUTTON_PLAY_1.onclick = function () {
-        playButton(VIDEOGAMES_VALUE);
-    }
-    BUTTON_PLAY_2.onclick = function () {
-        playButton(SPORTS_VALUE);
-    }
-    BUTTON_PLAY_3.onclick = function () {
-        playButton(CHESS_VALUE);
-    }
-
-
-    BUTTON_FIGHT_1.onclick = function () {
-        fightButton(FIGHT_VALUE);
-    }
-    BUTTON_FIGHT_2.onclick = function () {
-        fightButton(RUNNING_VALUE);
-    }
-
-
-    BUTTON_SLEEP_1.onclick = function () {
-        sleepButton(NAP_VALUE);
-    }
-    BUTTON_SLEEP_2.onclick = function () {
-        sleepButton(SLEEP_VALUE);
-    }
-
-
-}
-
-function eatButton(value) {
-    PROGRESS_EAT.value = (PROGRESS_EAT.value + value);
-    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
-
-    BUTTON_EAT_1.disabled = true;
-    BUTTON_EAT_2.disabled = true;
-    BUTTON_EAT_3.disabled = true;
-    setInterval(enableEatButtons, 2000);
-}
-
-
-function enableEatButtons() {
-    BUTTON_EAT_1.disabled = false;
-    BUTTON_EAT_2.disabled = false;
-    BUTTON_EAT_3.disabled = false;
-}
-
-function fightButton(value) {
-    PROGRESS_FIGHT.value = (PROGRESS_FIGHT.value + value);
-    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
-
-    BUTTON_FIGHT_1.disabled = true;
-    BUTTON_FIGHT_2.disabled = true;
-    setInterval(enableFightButtons, 2000);
-}
-
-
-function enableFightButtons() {
-    BUTTON_FIGHT_1.disabled = false;
-    BUTTON_FIGHT_2.disabled = false;
-}
-
-function playButton(value) {
-    PROGRESS_PLAY.value = (PROGRESS_PLAY.value + value);
-    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value - (value / 5));
-
-    BUTTON_PLAY_1.disabled = true;
-    BUTTON_PLAY_2.disabled = true;
-    BUTTON_PLAY_3.disabled = true;
-
-    setInterval(enablePlayButtons, 2000);
-}
-
-function enablePlayButtons() {
-    BUTTON_PLAY_1.disabled = false;
-    BUTTON_PLAY_2.disabled = false;
-    BUTTON_PLAY_3.disabled = false;
-
-}
-
-function sleepButton(value) {
-    PROGRESS_SLEEP.value = (PROGRESS_SLEEP.value + value);
-    PROGRESS_EAT.value = (PROGRESS_EAT.value - (value / 2));
-    PROGRESS_FIGHT.value = (PROGRESS_FIGHT.value - (value / 3));
-
-    BUTTON_SLEEP_1.disabled = true;
-    BUTTON_SLEEP_2.disabled = true;
-    setInterval(enableSleepButtons, 2000);
-}
-
-function enableSleepButtons() {
-    BUTTON_SLEEP_2.disabled = false;
-    BUTTON_SLEEP_2.disabled = false;
-}
- */
