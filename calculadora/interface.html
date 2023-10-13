@@ -14,19 +14,52 @@
         <div class="calculadora-content">
             <div class="calc-head">
                 <p class="p-calc-head">calc</p>
-                <p class="p-calc-head p-theme">THEME</p>
+                <p class="p-theme">THEME</p>
 
                 <div class="theme">
-                    <p class="p-calc-head">1 2 3</p>
-                    <input type="range" id="them-slider" name="slider" min="0" max="2" value="0">
+                    <div class="theme-numbers">
+                        <p class="p-calc-head">1</p>
+                        <p class="p-calc-head">2</p>
+                        <p class="p-calc-head">3</p>
+                    </div>
+                    <input type="range" id="theme-slider" class="slider" name="slider" min="0" max="2" value="0">
                 </div>
 
 
             </div>
-            <div class="calc-result"></div>
-            <div class="calc-buttons"></div>
+            <div class="calc-result" id="calc-result">
+                <div class="operation-result">
+                    <p>339,981</p>
+                </div>
+            </div>
+            <div class="calc-buttons" id="calc-buttons">
+                <div class="button-group">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button class="special-button-del" id="special-button-del">DEL</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>+</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>-</button>
+                    <button>.</button>
+                    <button>0</button>
+                    <button>/</button>
+                    <button>X</button>
+
+                    <button class="special-button-reset" id="special-button-reset">RESET</button>
+                    <button class="special-button-equals" id="special-button-equals">=</button>
+                </div>
+
+            </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

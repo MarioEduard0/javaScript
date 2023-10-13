@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap');
 
+:root {
+    --backgroundColor-slider: rgba(37, 45, 69, 255);
+    --thumb-color: rgba(212, 61, 51, 255);
+
+    --theme-button-del-color: rgba(162, 179, 225, 255);
+    --theme-button-active-color: rgba(255, 255, 255, 255);
+    --theme-button-equals-active-color: rgba(249, 108, 91, 255);
+}
+
+
+* {
+    transition: background-color 0.5s ease;
+
+    & button {
+        transition: none;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+    }
+}
+
+
 body {
     margin: 0px;
     background-color: rgb(92, 92, 154);
@@ -8,12 +31,14 @@ body {
     justify-content: center;
 }
 
+
 .calculadora {
+
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    width: 100%;
+    width: 400PX;
     height: 85vh;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
@@ -23,7 +48,6 @@ body {
 
 .calculadora-content {
     margin: 20px;
-    background-color: rgb(92, 92, 154);
     width: 100%;
     height: 90%;
     padding: 10px;
@@ -55,7 +79,7 @@ body {
     }
 
     & .theme {
-        width: 20%;
+        width: 40%;
         height: auto;
 
 
@@ -63,8 +87,8 @@ body {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 20px;
-            background-color: #292828;
+            height: 23px;
+            background-color: var(--backgroundColor-slider);
             outline: none;
             border-radius: 100px;
         }
@@ -73,10 +97,10 @@ body {
         & input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
-            background-color: #ff0d00;
-            border: 5px solid #292828;
+            width: 23px;
+            height: 23px;
+            background-color: var(--thumb-color);
+            border: 2.5px solid var(--backgroundColor-slider);
             border-radius: 50%;
             cursor: pointer;
         }
@@ -90,23 +114,20 @@ body {
         margin: 7px;
 
         & p {
-            font-size: 10px;
+            font-size: 12px;
         }
     }
 
 
 }
 
-
-
-
 .calc-result {
     display: flex;
     justify-content: center;
-    background-color: rgb(37, 35, 76);
+    background-color: rgba(24, 31, 50, 255);
     width: 100%;
-    height: 24%;
-    margin-bottom: 2.5%;
+    height: 16%;
+    margin-bottom: 7%;
     border-radius: 10px;
 
     & .operation-result {
@@ -122,10 +143,13 @@ body {
 }
 
 .calc-buttons {
-    background-color: rgb(50, 46, 103);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(37, 45, 68, 255);
     border-radius: 10px;
     width: 100%;
-    height: 55%;
+    height: 80%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -142,7 +166,139 @@ body {
     font-size: 10px;
 }
 
-button{
+button {
+    color: rgba(77, 78, 83, 255);
+    font-family: 'Hind', sans-serif;
+    font-size: 25px;
+    background-color: rgba(234, 227, 219, 255);
     width: 60px;
-    height: 60px;
+    height: 65px;
+    margin: 5px;
+    border: 0px solid;
+    border-bottom: 5px solid rgba(179, 163, 151, 255);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.special-button-del {
+    color: white;
+    background-color: rgba(101, 114, 151, 255);
+    border-bottom: 5px solid rgba(65, 79, 118, 255);
+
+}
+
+.special-button-reset {
+    color: white;
+    width: 97%;
+    background-color: rgba(101, 114, 151, 255);
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    border-bottom: 5px solid rgba(65, 79, 118, 255);
+}
+
+.special-button-equals {
+    color: white;
+    width: 97%;
+    background-color: rgba(209, 63, 48, 255);
+    border-bottom: 5px solid rgba(145, 39, 32, 255);
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 5;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button:active {
+    translate: 0px 2px;
+    background-color: var(--theme-button-active-color);
+}
+
+.special-button-del:active {
+    background-color: var(--theme-button-del-color);
+}
+
+.special-button-reset:active {
+    background-color: var(--theme-button-del-color);
+}
+
+.special-button-equals:active {
+    background-color: var(--theme-button-equals-active-color);
+}
+
+
+@media (width<750px) {
+
+
+
+    .calculadora {
+        margin-top: 70px;
+        margin-bottom: 10px;
+    }
+
+    .calculadora-content {
+        width: 300px;
+        height: 600px;
+    }
+
+    .calc-head {
+        width: 300px;
+    }
+
+    .calc-result {
+        width: 300px;
+        height: 15%;
+    }
+
+    .calc-buttons {
+        width: 300px;
+        height: auto;
+    }
+
+    .button-group {
+        margin: 20px;
+    }
+
+    .special-button-reset {
+        width: 94%;
+    }
+
+    .special-button-equals {
+        width: 94%;
+    }
+
+}
+
+@media (width>750px) {
+
+
+    .calc-buttons {
+        width: 500px;
+        height: auto;
+    }
+
+    .calculadora-content {
+        width: 500px;
+    }
+
+    button {
+        height: 89%;
+        width: 110px;
+    }
+
+    .special-button-reset {
+        width: 97%;
+    }
+
+    .special-button-equals {
+        width: 97%;
+    }
+
+
 }
