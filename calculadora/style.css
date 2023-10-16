@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap');
 
 :root {
+
+    --limit-text: 20;
     --backgroundColor-slider: rgba(37, 45, 69, 255);
     --thumb-color: rgba(212, 61, 51, 255);
 
-    --theme-button-del-color: rgba(162, 179, 225, 255);
+    --theme-button-del-active-color: rgba(162, 179, 225, 255);
     --theme-button-active-color: rgba(255, 255, 255, 255);
     --theme-button-equals-active-color: rgba(249, 108, 91, 255);
 }
 
 
 * {
-    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
 
     & button {
         transition: none;
@@ -20,6 +27,7 @@
         -ms-transition: none;
         -o-transition: none;
     }
+
 }
 
 
@@ -122,24 +130,38 @@ body {
 }
 
 .calc-result {
-    display: flex;
-    justify-content: center;
     background-color: rgba(24, 31, 50, 255);
     width: 100%;
     height: 16%;
     margin-bottom: 7%;
     border-radius: 10px;
+}
 
-    & .operation-result {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        font-size: 48px;
-        color: white;
-        font-family: 'Hind', sans-serif;
-        width: 90%;
-        height: 100%;
-    }
+.operation-result {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    color: white;
+    font-family: 'Hind', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+#operation-result {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 0px;
+    margin-right: 10px;
+    font-size: 48px;
+
+}
+
+.ans {
+    margin-top: 0px;
+    font-size: 0px;
+    margin-top: 5px;
+    margin-right: 10px;
 }
 
 .calc-buttons {
@@ -217,24 +239,22 @@ button {
 
 button:active {
     translate: 0px 2px;
-    background-color: var(--theme-button-active-color);
+    background-color: var(--theme-button-active-color) !important;
 }
 
-.special-button-del:active {
-    background-color: var(--theme-button-del-color);
-}
-
+.special-button-del:active,
 .special-button-reset:active {
-    background-color: var(--theme-button-del-color);
+    background-color: var(--theme-button-del-active-color) !important;
 }
+
+
 
 .special-button-equals:active {
-    background-color: var(--theme-button-equals-active-color);
+    background-color: var(--theme-button-equals-active-color) !important;
 }
 
 
 @media (width<750px) {
-
 
 
     .calculadora {
@@ -278,9 +298,10 @@ button:active {
 @media (width>750px) {
 
 
+
     .calc-buttons {
         width: 500px;
-        height: auto;
+        height: 300px;
     }
 
     .calculadora-content {
