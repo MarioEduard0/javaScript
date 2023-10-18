@@ -10,16 +10,30 @@
 
 <body>
     <div class="container">
+        <div class="categories-selector">
+            <p class="combo-title">Select Chuck Norris category filter</p>
+            <select name="select" class="combBox" id="combo-box">
+                <option value="value0">None</option>
+            </select>
+        </div>
+        <div class="query-selector">
+            <input type="text" name="query-selector" class="query-selector" id="query-selector">
+            <button class="next-query" id="next-query">Serch query</button>
+
+        </div>
         <div class="chuck-container">
             <img class="chuck-img" src="img/b28cfc4bd9dc3f81c8021c91950f3a16.gif" alt="">
             <div class="text-api">
-                <p class="api-response">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fugiat
+                <p class="api-response" id="api-response">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Inventore fugiat
                     aperiam perferendis odit. Reiciendis exercitationem neque possimus ullam cumque dolorum voluptatem
                     atque tenetur dolore, fugiat quia, provident quam illo hic.</p>
             </div>
-            <button class="next-respone" id="next-respone">Next</button>
+            <button class="next-response" id="next-response">Next</button>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
