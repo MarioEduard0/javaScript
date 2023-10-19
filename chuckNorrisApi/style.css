@@ -6,7 +6,8 @@
 
 body {
     background-color: rgb(189, 189, 189);
-    margin: 0px;
+    margin: 30px;
+    margin-right: 50px;
 
 }
 
@@ -14,9 +15,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 30px;
 
 }
 
@@ -43,7 +41,7 @@ body {
 
 
 .text-api {
-    margin: 30px;
+    margin: 10px;
 
     background-color: black;
     color: white;
@@ -146,4 +144,19 @@ select:hover {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+
+@media(width < 650px) {
+*{
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+    .chuck-container {
+        flex-direction: column;
+    }
 }

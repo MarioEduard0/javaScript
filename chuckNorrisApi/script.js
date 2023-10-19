@@ -27,21 +27,23 @@ function loadComboBox() {
 
 function setElementsToListener() {
    next_button.onclick = function () {
+      next_button.disabled = true;
+      query_button.disabled = true;
       apiGet();
    };
-
 
    combo_box.onchange = function () {
       saveCategorieSelected();
    };
 
    query_button.onclick = function () {
+      next_button.disabled = true;
+      query_button.disabled = true;
       filterQuery();
    };
 }
 
 function filterQuery() {
-
    if (query_text.value != "" || query_text.value.length() >= 3) {
       var query = "https://api.chucknorris.io/jokes/search?query=" + query_text.value;
       fetch(query)
@@ -68,13 +70,11 @@ function saveCategorieSelected() {
    const selectedOption = combo_box.options[combo_box.selectedIndex];
    if (selectedOption != "None") {
       selectedOptionUrl = 'https://api.chucknorris.io/jokes/random?category=' + selectedOption.textContent;
-      console.log(selectedOptionUrl);
    } else {
       selectedOptionUrl = "";
    }
 }
 function writeApi(json) {
-   console.log(json)
    const text = json.value;
    let currentIndex = 0;
 
@@ -83,6 +83,9 @@ function writeApi(json) {
          api_response.textContent += text[currentIndex];
          currentIndex++;
          setTimeout(showText, 10);
+      } else {
+         next_button.disabled = false;
+         query_button.disabled = false;
       }
    }
 
@@ -91,24 +94,30 @@ function writeApi(json) {
 }
 
 function writeQuery(json) {
-//    var random = Math.floor(Math.random() * json.length());
-//    const text = json[random].value;
+   var random = Math.floor(Math.random() * json.total);
+   var text = "";
+   if (json.result[random] != undefined) {
+      text = json.result[random].value;
+   } else {
+      text = "Chuck doesnt say anything similar to that";
+   }
+
    let currentIndex = 0;
 
-   console.log(json);
-   // console.log(json[random])
+   function showText() {
+      if (currentIndex < text.length) {
+         api_response.textContent += text[currentIndex];
+         currentIndex++;
+         setTimeout(showText, 10);
+      } else {
+         next_button.disabled = false;
+         query_button.disabled = false;
 
+      }
+   }
+   api_response.textContent = '';
+   showText();
 
-   // function showText() {
-   //    if (currentIndex < text.length) {
-   //       api_response.textContent += text[currentIndex];
-   //       currentIndex++;
-   //       setTimeout(showText, 10);
-   //    }
-   // }
-
-   // api_response.textContent = '';
-   // showText();
 }
 
 loadComboBox();
