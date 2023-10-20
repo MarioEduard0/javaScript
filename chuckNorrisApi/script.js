@@ -44,7 +44,7 @@ function setElementsToListener() {
 }
 
 function filterQuery() {
-   if (query_text.value != "" || query_text.value.length() >= 3) {
+   if (query_text.value != "" && query_text.value.length >= 3) {
       var query = "https://api.chucknorris.io/jokes/search?query=" + query_text.value;
       fetch(query)
          .then(response => response.json())
@@ -103,6 +103,7 @@ function writeQuery(json) {
    }
 
    let currentIndex = 0;
+   
 
    function showText() {
       if (currentIndex < text.length) {
@@ -112,10 +113,9 @@ function writeQuery(json) {
       } else {
          next_button.disabled = false;
          query_button.disabled = false;
-
       }
    }
-   api_response.textContent = '';
+   api_response.textContent = "";
    showText();
 
 }

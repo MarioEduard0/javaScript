@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.negrita {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 100px;
+    background-color: black;
+}
+
+
+.blancas {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+[class*=teclado] {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border: 2px solid black;
+}
