@@ -212,11 +212,28 @@ main>p {
     flex-wrap: wrap;
     justify-content: center;
 
-
     padding-top: 60px;
     width: 100%;
     height: 100vh;
     background-color: red;
+}
+
+.poke-img>img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: -60px;
+    background-color: #a81e24;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    
+}
+
+.pokemon-name {
+    padding-top: 40px;
+    color: white;
+    font-size: 30px;
 }
 
 
@@ -255,12 +272,12 @@ main>p {
     color: black;
 }
 
-.measure-value{
-color: var(--white-color);
-font-size: 22px;
+.measure-value {
+    color: var(--white-color);
+    font-size: 22px;
 }
 
-.measure{
+.measure {
     color: grey;
 }
 
