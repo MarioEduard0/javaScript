@@ -2,7 +2,6 @@ const toggleButton = document.getElementById("toggle-types");
 const typesContainer = document.querySelector(".types");
 const divsInsideTypes = typesContainer.querySelectorAll("div");
 
-
 const container_pokemon_cards = document.getElementById("pokemon");
 
 var textArray = [];
@@ -21,10 +20,11 @@ toggleButton.addEventListener("click", () => {
       typesContainer.style.marginRight = "5px";
       typesContainer.style.borderRadius = "15px";
 
-
-      typesContainer.style.backgroundColor = "rgba(0, 0, 0, 0.374)";
+      typesContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
       typesContainer.style.opacity = 1;
       typesContainer.style.top = "0";
+      typesContainer.style.marginBottom = "-175px";
+
     }, 10);
   } else {
     typesContainer.style.opacity = 0;
@@ -62,7 +62,6 @@ divsInsideTypes.forEach((div) => {
   });
 });
 
-
 function loafPokemons() {
   const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -93,47 +92,56 @@ function loafPokemons() {
   }
 
   getAllPokemonData().then((pokemonArray) => {
-
     for (let index = 0; index < pokemonArray.length; index++) {
       addCards(pokemonArray, index);
     }
-
   });
-
-
 }
 
 function addCards(pokemonArray, index) {
   // Crear una nueva instancia de la clase .pokemon
-  const containerPokemonCards = document.getElementById("container-pokemon-cards");
+  const containerPokemonCards = document.getElementById(
+    "container-pokemon-cards"
+  );
   const newPokemonInstance = document.createElement("div");
   newPokemonInstance.className = "pokemon";
 
   // Crear la estructura HTML para la nueva instancia
   newPokemonInstance.innerHTML = `
       <div class="poke-img ${pokemonArray[index].types[0].type.name}">
-          <img src="${pokemonArray[index].sprites.front_default}" alt="" id="pokemon-image">
+          <img src="${
+            pokemonArray[index].sprites.other["official-artwork"][
+              "front_default"
+            ]
+          }" alt="" id="pokemon-image">
       </div>
       <div class="poke-card">
           <h2 class="pokemon-name">${pokemonArray[index].name}</h2>
           <div class="types-pokemon">
               <div class=${pokemonArray[index].types[0].type.name}>
-                  <img src="design-ideas/types_icons/${pokemonArray[index].types[0].type.name}.png" alt="">
+                  <img src="design-ideas/types_icons/${
+                    pokemonArray[index].types[0].type.name
+                  }.png" alt="">
                   <p>${pokemonArray[index].types[0].type.name}</p>
               </div>
-              ${pokemonArray[index].types[1]
-      ? `<div class=${pokemonArray[index].types[1].type.name}>
+              ${
+                pokemonArray[index].types[1]
+                  ? `<div class=${pokemonArray[index].types[1].type.name}>
                         <img src="design-ideas/types_icons/${pokemonArray[index].types[1].type.name}.png" alt="">
                         <p>${pokemonArray[index].types[1].type.name}</p>
                     </div>`
-      : ''
-    }
+                  : ""
+              }
 
           </div>
           <div class="pokemon-info">
               <div class="pokemon-measure" id="pokemon-measure">
-                  <p class="measure-value">${(pokemonArray[index].weight / 10)} KG</p>
-                  <p class="measure-value">${(pokemonArray[index].height / 10)} M</p>
+                  <p class="measure-value">${
+                    pokemonArray[index].weight / 10
+                  } KG</p>
+                  <p class="measure-value">${
+                    pokemonArray[index].height / 10
+                  } M</p>
                   <p class="measure">Weight</p>
                   <p class="measure">Height</p>
               </div>
@@ -142,17 +150,29 @@ function addCards(pokemonArray, index) {
               <p>Base Stats</p>
               <div class="graphic-stats">
                   <p class="stats-name">HP</p>
-                  <progress value="${pokemonArray[index].stats[0].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[0].base_stat
+                  }" max="270"></progress>
                   <p class="stats-name">ATK</p>
-                  <progress value="${pokemonArray[index].stats[1].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[1].base_stat
+                  }" max="270"></progress>
                   <p class="stats-name">DEF</p>
-                  <progress value="${pokemonArray[index].stats[2].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[2].base_stat
+                  }" max="270"></progress>
                   <p class="stats-name">STK</p>
-                  <progress value="${pokemonArray[index].stats[3].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[3].base_stat
+                  }" max="270"></progress>
                   <p class="stats-name">SEF</p>
-                  <progress value="${pokemonArray[index].stats[4].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[4].base_stat
+                  }" max="270"></progress>
                   <p class="stats-name">SPD</p>
-                  <progress value="${pokemonArray[index].stats[5].base_stat}" max="270"></progress>
+                  <progress value="${
+                    pokemonArray[index].stats[5].base_stat
+                  }" max="270"></progress>
                   
               </div>
           </div>
@@ -238,14 +258,7 @@ function createPopupCard(pokemonData) {
     document.body.removeChild(backgroundBlur);
     document.body.removeChild(popupContainerCentered);
   });
-
-
 }
-
-
-
-
-
 
 loafPokemons();
 
