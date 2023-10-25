@@ -8,13 +8,12 @@
 }
 
 * {
-    
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     margin: 0px;
-    background-color: var();
 }
 
 header {
@@ -102,6 +101,7 @@ main>p {
 }
 
 .filter-container {
+    z-index: 5;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -109,6 +109,8 @@ main>p {
     height: auto;
     margin-top: 5px;
     border-radius: 10px;
+    position: sticky;
+    top: 5px;
 }
 
 .types {
@@ -165,12 +167,14 @@ main>p {
 }
 
 .types>div.active {
-    translate: 0px 5px;
+    translate: 0px 2px;
     color: black;
     background-color: white;
 }
 
 .toggle-types {
+    z-index: 5;
+    margin-top: -6px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -185,6 +189,7 @@ main>p {
     border: 0px;
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
+
 }
 
 .toggle-types:hover {
@@ -206,31 +211,41 @@ main>p {
 }
 
 .toggle-types.active img {
-
     transform: rotateX(180deg);
     translate: 0px -10px;
 }
 
 .container-pokemon-cards {
+    z-index: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
+    overflow: scroll;
     padding-top: 60px;
-    width: 100%;
-    height: 100vh;
+    padding-left: 12px;
+    margin-top: -55px;
+    width: 97%;
+    height: 95vh;
 
     transition: opacity 0.2s ease-in-out;
 }
 
-.poke-img>img {
+.poke-img {
     position: relative;
-    width: 100%;
+    width: 260px;
+
     height: auto;
     margin-bottom: -60px;
-    background-color: #a81e24;
-    border-radius: 30px;
     transition: filter 0.3s;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.poke-img>img {
+    width: 160px;
 
 }
 
@@ -241,21 +256,34 @@ main>p {
 }
 
 .poke-card {
-    width: 320px;
-    height: 450px;
+    width: 260px;
+    height: 350px;
     background-color: black;
     border-radius: 0px 0px 10px 10px;
 }
 
 .pokemon {
+    margin: 40px;
     width: auto;
     height: fit-content;
     border-radius: 30px 30px 10px 10px;
-    box-shadow: 13px 13px 41px #c7c7c7,
-        -13px -13px 41px #ffffff;
+    transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
+    -webkit-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
+    -moz-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
+    -ms-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
+    -o-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
 }
 
+.pokemon:hover {
+    translate: -2px -2px;
+    box-shadow: 6px 6px 12px #5a5a5a, -6px -6px 12px #ffffff;
+
+}
+
+.pokemon:active {}
+
 .types-pokemon {
+    margin-top: -20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -270,6 +298,7 @@ main>p {
 }
 
 .pokemon-info {
+    margin-top: -10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -287,7 +316,7 @@ main>p {
 .measure-value {
     margin-bottom: 10px;
     color: var(--white-color);
-    font-size: 22px;
+    font-size: 14px;
 }
 
 .measure {
@@ -296,7 +325,7 @@ main>p {
 }
 
 .poke-stats {
-    margin-top: -40px;
+    margin-top: -25px;
 
     & p {
         color: white;
@@ -314,24 +343,16 @@ main>p {
 }
 
 .stats-name {
-    margin: 5px;
+    margin: 2.5px;
     color: white;
     font-size: 12px;
-}
-
-.stat-value {
-    color: black !important;
-    position: relative;
-    right: 450%;
-    font-size: 12px;
-    margin: 5px;
 }
 
 
 progress {
 
     width: 90%;
-    height: 15px;
+    height: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -358,15 +379,92 @@ progress::-webkit-progress-value {
 
 
 
-.acero {
+
+body:-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+    background-color: black;
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--mustard-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+
+
+
+.container-pokemon-cards:-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+.container-pokemon-cards::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+    background-color: transparent;
+
+}
+
+.container-pokemon-cards::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.popup-container-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.299);
+    backdrop-filter: blur(15px);
+    z-index: 9;
+
+}
+
+.popup-card {
+    width: 400px;
+    height: 400px;
+    background-color: red;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+
+
+
+.steel {
     background-color: #60766a;
 }
 
-.agua {
+.water {
     background-color: #1552e4;
 }
 
-.bicho {
+.bug {
     background-color: #1c4a2b;
 }
 
@@ -374,28 +472,28 @@ progress::-webkit-progress-value {
     background-color: #448b95;
 }
 
-.electrico {
+.electric {
     color: black !important;
     background-color: #e4e42c;
 }
 
-.fantasma {
+.ghost {
     background-color: #32346d;
 }
 
-.fuego {
+.fire {
     background-color: #a81e24;
 }
 
-.hada {
+.fairy {
     background-color: #961b45;
 }
 
-.hielo {
+.ice {
     background-color: #89cff9;
 }
 
-.lucha {
+.fighting {
     background-color: #983f24;
 }
 
@@ -403,37 +501,33 @@ progress::-webkit-progress-value {
     background-color: #76535c;
 }
 
-.planta {
+.grass {
     background-color: #127c3d;
 }
 
-.psiquico {
+.psychic {
     background-color: #a32c68;
 }
 
-.roca {
+.rock {
     background-color: #48180b;
 }
 
-.siniestro {
+.dark {
     background-color: #040704;
 }
 
-.tierra {
+.ground {
     background-color: #a9722c;
 }
 
-.veneno {
+.poison {
     background-color: #5f2e8a;
 }
 
-.volador {
+.flying {
     background-color: #4a677d;
 }
-
-
-
-
 
 
 @media (width<380px) {
