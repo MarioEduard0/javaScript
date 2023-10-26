@@ -109,72 +109,25 @@ function addCards(pokemonArray, index) {
   // Crear la estructura HTML para la nueva instancia
   newPokemonInstance.innerHTML = `
       <div class="poke-img ${pokemonArray[index].types[0].type.name}">
-          <img src="${
-            pokemonArray[index].sprites.other["official-artwork"][
-              "front_default"
-            ]
-          }" alt="" id="pokemon-image">
+          <img src="${pokemonArray[index].sprites.other["official-artwork"]["front_default"]
+    }" alt="" id="pokemon-image">
       </div>
       <div class="poke-card">
           <h2 class="pokemon-name">${pokemonArray[index].name}</h2>
           <div class="types-pokemon">
               <div class=${pokemonArray[index].types[0].type.name}>
-                  <img src="design-ideas/types_icons/${
-                    pokemonArray[index].types[0].type.name
-                  }.png" alt="">
+                  <img src="design-ideas/types_icons/${pokemonArray[index].types[0].type.name
+    }.png" alt="">
                   <p>${pokemonArray[index].types[0].type.name}</p>
               </div>
-              ${
-                pokemonArray[index].types[1]
-                  ? `<div class=${pokemonArray[index].types[1].type.name}>
+              ${pokemonArray[index].types[1]
+      ? `<div class=${pokemonArray[index].types[1].type.name}>
                         <img src="design-ideas/types_icons/${pokemonArray[index].types[1].type.name}.png" alt="">
                         <p>${pokemonArray[index].types[1].type.name}</p>
                     </div>`
-                  : ""
-              }
+      : ""
+    }
 
-          </div>
-          <div class="pokemon-info">
-              <div class="pokemon-measure" id="pokemon-measure">
-                  <p class="measure-value">${
-                    pokemonArray[index].weight / 10
-                  } KG</p>
-                  <p class="measure-value">${
-                    pokemonArray[index].height / 10
-                  } M</p>
-                  <p class="measure">Weight</p>
-                  <p class="measure">Height</p>
-              </div>
-          </div>
-          <div class="poke-stats" id="pokemon-stats">
-              <p>Base Stats</p>
-              <div class="graphic-stats">
-                  <p class="stats-name">HP</p>
-                  <progress value="${
-                    pokemonArray[index].stats[0].base_stat
-                  }" max="270"></progress>
-                  <p class="stats-name">ATK</p>
-                  <progress value="${
-                    pokemonArray[index].stats[1].base_stat
-                  }" max="270"></progress>
-                  <p class="stats-name">DEF</p>
-                  <progress value="${
-                    pokemonArray[index].stats[2].base_stat
-                  }" max="270"></progress>
-                  <p class="stats-name">STK</p>
-                  <progress value="${
-                    pokemonArray[index].stats[3].base_stat
-                  }" max="270"></progress>
-                  <p class="stats-name">SEF</p>
-                  <progress value="${
-                    pokemonArray[index].stats[4].base_stat
-                  }" max="270"></progress>
-                  <p class="stats-name">SPD</p>
-                  <progress value="${
-                    pokemonArray[index].stats[5].base_stat
-                  }" max="270"></progress>
-                  
-              </div>
           </div>
       </div>
   `;
@@ -185,6 +138,7 @@ function addCards(pokemonArray, index) {
 }
 
 function applyRotationEffect(card, pokemon_data) {
+
   card.addEventListener("mousemove", (evt) => {
     const { layerX, layerY } = evt;
     const card_width = card.clientWidth;
@@ -220,7 +174,6 @@ function applyRotationEffect(card, pokemon_data) {
 function createPopupCard(pokemonData) {
   // Crear un div que cubra toda la pantalla (fondo oscuro con blur)
   const backgroundBlur = document.createElement("div");
-  backgroundBlur.className = "background-blur";
   document.body.appendChild(backgroundBlur);
 
   // Crear un div centrado para la tarjeta emergente
@@ -233,15 +186,64 @@ function createPopupCard(pokemonData) {
   popupCard.id = "pop-up";
 
   popupCard.innerHTML = `
+  
       <div class="popup-content">
-          <div class="popup-header">
+          <div class="popup-header ${pokemonData.types[0].type.name}">
+              <button class="close-popup ${pokemonData.types[0].type.name}"><img src="design-ideas/exit.png" alt=""></button>
               <h2 class="popup-pokemon-name">${pokemonData.name}</h2>
-              <span class="close-popup">&times;</span>
           </div>
           <div class="popup-body">
-              <!-- Agregar la información del Pokémon -->
-              <img src="${pokemonData.sprites.front_default}" alt="Pokemon">
-              <!-- Agregar más detalles del Pokémon aquí -->
+              <div class="info-pokemon-card">
+                  <h2>ID</h2>
+                  <p>${pokemonData.id}</p>
+                  <h2>Height</h2>
+                  <p>${pokemonData.height / 10}</p>
+                  <h2>Weight</h2>
+                  <p>${pokemonData.weight / 10}</p>
+                  <h2>Ability</h2>
+                  <div class="${pokemonData.types[0].type.name} ability">
+                      <p>${pokemonData.abilities[0].ability.name}</p>
+                  </div>
+                  <h2>Type</h2>
+                  <div class="card-poke-types">
+                      <div class="${pokemonData.types[0].type.name}"><img src="design-ideas/types_icons/${pokemonData.types[0].type.name}.png" alt="">
+                          <p>${pokemonData.types[0].type.name}</p>
+                      </div>
+                      ${pokemonData.types[1] ? `
+                      <div class="${pokemonData.types[1].type.name}"><img src="design-ideas/types_icons/${pokemonData.types[1].type.name}.png" alt="">
+                          <p>${pokemonData.types[1].type.name}</p>
+                      </div>`: ""}
+                  </div>
+              </div>
+              <div class="img-pokemon-card">
+                  <img src="${pokemonData.sprites.other["official-artwork"]["front_default"]}"
+                      alt="Pokemon">
+              </div>
+              <div class="card-poke-stats" id="car-poke-stats">
+                  <h2>Base Stats</h2>
+                  <div class="graphic-stats">
+                      <p class="stats-name">HP</p>
+                      <progress class="${pokemonData.types[0].type.name}" value="${pokemonData.stats[0].base_stat}" max="270"></progress>
+                      <p class="stats-name">ATK</p>
+                      <progress value="${pokemonData.stats[1].base_stat}" max="270"></progress>
+
+                      <p class="stats-name">DEF</p>
+                      <progress value="${pokemonData.stats[2].base_stat}" max="270"></progress>
+
+                      <p class="stats-name">STK</p>
+                      <progress value="${pokemonData.stats[3].base_stat}" max="270"></progress>
+
+                      <p class="stats-name">SEF</p>
+                      <progress value="${pokemonData.stats[4].base_stat}" max="270"></progress>
+
+                      <p class="stats-name">SPD</p>
+                      <progress value="${pokemonData.stats[5].base_stat}" max="270"></progress>
+
+                      <p class="stats-name">Total</p>
+                      <span class="stats-total  ${pokemonData.types[0].type.name}">${(pokemonData.stats[0].base_stat + pokemonData.stats[1].base_stat + pokemonData.stats[2].base_stat + pokemonData.stats[3].base_stat + pokemonData.stats[4].base_stat + pokemonData.stats[5].base_stat)} </span>
+                  </div>
+              </div>
+
           </div>
       </div>
   `;
@@ -260,6 +262,6 @@ function createPopupCard(pokemonData) {
   });
 }
 
-loafPokemons();
+// loafPokemons();
 
 // addCards();
