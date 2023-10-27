@@ -223,7 +223,7 @@ function createPopupCard(pokemonData) {
                   <h2>Base Stats</h2>
                   <div class="graphic-stats">
                       <p class="stats-name">HP</p>
-                      <progress class="${pokemonData.types[0].type.name}" value="${pokemonData.stats[0].base_stat}" max="270"></progress>
+                      <progress value="${pokemonData.stats[0].base_stat}" max="270"></progress>
                       <p class="stats-name">ATK</p>
                       <progress value="${pokemonData.stats[1].base_stat}" max="270"></progress>
 
@@ -249,17 +249,89 @@ function createPopupCard(pokemonData) {
   `;
 
   // Agregar la tarjeta emergente al div contenedor
-  popupContainerCentered.appendChild(popupCard);
 
   // Agregar el div contenedor al cuerpo del documento
   document.body.appendChild(popupContainerCentered);
+  popupContainerCentered.appendChild(popupCard);
+  popupContainerCentered.style.backgroundColor = " rgba(255, 255, 255, 0.555)";
+  popupContainerCentered.style.backdropFilter = " blur(20px)";
 
+
+  // popupContainerCentered.style.filter = "blur(25px)";
+
+  setTimeout(() => {
+
+    popupCard.style.opacity = 1;
+    popupCard.style.top = "0px";
+    popupCard.style.transform = "scale(1)";
+  }, 200);
   // Agregar un evento para cerrar la tarjeta emergente al hacer clic en la "X"
   const closeButton = popupCard.querySelector(".close-popup");
   closeButton.addEventListener("click", () => {
-    document.body.removeChild(backgroundBlur);
-    document.body.removeChild(popupContainerCentered);
+
+    popupCard.style.opacity = 0;
+    popupCard.style.top = "-25vh";
+    popupCard.style.transform = "scale(0)";
+    popupContainerCentered.style.backgroundColor = " rgba(255, 255, 255, 0)";
+
+
+
+    setInterval(() => {
+      document.body.removeChild(backgroundBlur);
+      document.body.removeChild(popupContainerCentered);
+    }, 300);
   });
+
+  const statsNames = popupCard.querySelector(".graphic-stats");
+  const progressBars = popupCard.querySelectorAll("progress");
+  const totalValue = popupCard.querySelector(".stats-total");
+
+
+  var auxTotal = totalValue.textContent;
+  var animationEnded = true;
+  var originalValues = [];
+
+  // Almacenar los valores originales de las barras de progreso
+  progressBars.forEach((progressBar, index) => {
+    originalValues.push(progressBar.value);
+
+
+    if (animationEnded) {
+      statsNames.addEventListener("mouseenter", () => {
+        animationEnded=false;
+        var auxTotalMin = 0;
+        totalValue.textContent = "";
+        progressBar.value = 0; // Establecer el valor de la barra de progreso en 0
+        let increment = originalValues[index] / 50; // Incremento por iteración
+
+        // Usar setInterval para incrementar gradualmente el valor de la barra
+        const interval = setInterval(() => {
+          if (progressBar.value < originalValues[index]) {
+            progressBar.value += increment;
+          } else {
+            clearInterval(interval); // Detener la animación cuando se alcanza el valor original
+          }
+        }, 20); // Intervalo de tiempo para cada iteración (ajustable)
+
+        const interval2 = setInterval(() => {
+          if (auxTotalMin < auxTotal) {
+            auxTotalMin += 1;
+            totalValue.textContent = auxTotalMin;
+
+          } else {
+            clearInterval(interval2); // Detener la animación cuando se alcanza el valor original
+            animationEnded=true;
+          }
+        }, 1);
+      });
+    }
+
+
+  });
+
+
+
+
 }
 
 // loafPokemons();

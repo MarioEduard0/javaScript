@@ -272,14 +272,15 @@ main>p {
     width: auto;
     height: fit-content;
     border-radius: 30px 30px 10px 10px;
-    transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
-    -webkit-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
-    -moz-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
-    -ms-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
-    -o-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out;
+    transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out, border 0.3s ease-in-out;
+    -webkit-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out, border 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out, border 0.3s ease-in-out;
+    -ms-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out, border 0.3s ease-in-out;
+    -o-transition: box-shadow 0.4s ease-in-out, translate 0.2s ease-in-out, border 0.3s ease-in-out;
 }
 
 .pokemon:hover {
+    border: 1.4px solid var(--mustard-color);
     translate: -2px -2px;
     box-shadow: 6px 6px 12px #5a5a5a, -6px -6px 12px #ffffff;
 
@@ -340,17 +341,36 @@ main>p {
 
 .graphic-stats {
     margin-left: 25px;
+
     display: grid;
     grid-template-columns: 12% 1fr;
-    column-gap: 5px;
     justify-content: center;
     align-items: center;
+
+    & progress::-webkit-progress-bar {
+        height: 15px;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+    }
+
 }
 
 .stats-name {
-    margin: 2.5px;
-    color: white;
-    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2px;
+    margin: -5px;
+
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
 }
 
 
@@ -441,16 +461,24 @@ body::-webkit-scrollbar-thumb {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.555);
-    backdrop-filter: blur(25px);
+    background-color: transparent;
+    backdrop-filter: unset;
     z-index: 9;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    transition: all 0.7s ease-in-out;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -ms-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
 }
 
 .popup-card {
+    top: 25vh;
+    /* opacity: 0; */
+    transform: scale(0.7);
     width: 90%;
     height: 70vh;
     position: relative;
@@ -459,14 +487,19 @@ body::-webkit-scrollbar-thumb {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.7s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+    -webkit-transition: all 0.7s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+    -ms-transition: all 0.7s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+    -o-transition: all 0.7s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
 }
 
 .popup-card:hover {
+    
     box-shadow: 11px 11px 22px #5a5656, -11px -11px 22px #ffffff;
     translate: -4px -4px;
 
@@ -557,6 +590,7 @@ body::-webkit-scrollbar-thumb {
     grid-template-columns: repeat(2, 50%);
     align-items: center;
     justify-content: center;
+    
 
     & h2 {
         margin: 20px;
@@ -569,26 +603,37 @@ body::-webkit-scrollbar-thumb {
     }
 
     & .ability {
-        padding: 5px;
-        background-color: red;
+        & p {
+            font-size: 20px;
+        }
+
+        padding: 10px;
+        margin-bottom: 20px;
+        width: fit-content;
         border-radius: 10px;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
     }
-
-    transform: rotate3d(0, 1, 0, 0deg);
-    -webkit-transform: rotate3d(0, 1, 0, 0deg);
-    -moz-transform: rotate3d(0, 1, 0, 0deg);
-    -ms-transform: rotate3d(0, 1, 0, 0deg);
-    -o-transform: rotate3d(0, 1, 0, 0deg);
+    transform: perspective(500px) rotatey(30deg);
+    -webkit-transform: perspective(500px) rotatey(30deg);
+    -moz-transform: perspective(500px) rotatey(30deg);
+    -ms-transform: perspective(500px) rotatey(30deg);
+    -o-transform: perspective(500px) rotatey(35deg);
 }
 
 .ability:hover {
+    filter: brightness(1.2);
     translate: -2px -2px;
-    box-shadow: 6px 6px 11px #535353c7,
-        -6px -6px 11px #f4f4f4;
+    box-shadow: 6px 6px 11px #535353c7, -6px -6px 11px #f4f4f4;
+
+    -webkit-filter: brightness(1.2);
 }
 
 .card-poke-types {
@@ -603,7 +648,6 @@ body::-webkit-scrollbar-thumb {
     justify-content: start;
     align-items: center;
     column-gap: 1px;
-    width: 130px;
     height: 40px;
     margin-left: 15px;
     padding-right: -5px;
@@ -620,28 +664,25 @@ body::-webkit-scrollbar-thumb {
     }
 
     border-radius: 100px;
-    transition: translate 0.2s ease-in-out,
-    box-shadow 0.4s ease-in-out,
-    display 1s ease-in-out;
-    -webkit-transition: translate 0.2s ease-in-out,
-    box-shadow 0.4s ease-in-out,
-    display 1s ease-in-out;
-    -moz-transition: translate 0.2s ease-in-out,
-    box-shadow 0.4s ease-in-out,
-    display 1s ease-in-out;
-    -ms-transition: translate 0.2s ease-in-out,
-    box-shadow 0.4s ease-in-out,
-    display 1s ease-in-out;
-    -o-transition: translate 0.2s ease-in-out,
-    box-shadow 0.4s ease-in-out,
-    display 1s ease-in-out;
+    transition: all 0.2s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+    -o-transition: all 0.2s ease-in-out,
+    box-shadow 0.4s ease-in-out;
 }
 
 .card-poke-types>div:hover {
+    width: 130px;
+
     translate: -1px -1px;
     box-shadow: 6px 6px 11px #535353c7,
         -6px -6px 11px #f4f4f4;
-    padding-right: 20px;
+    padding-right: 10px;
 
     & p {
         font-size: 16px;
@@ -649,8 +690,12 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+.img-pokemon-card {
+    text-align: center;
+}
+
 .img-pokemon-card>img {
-    width: 100%;
+    width: 60%;
 }
 
 
@@ -671,7 +716,7 @@ body::-webkit-scrollbar-thumb {
     & span {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 20px;
-        padding: 10px;
+        padding: 5px;
         color: black;
         border-radius: 10px;
         -webkit-border-radius: 10px;
@@ -679,7 +724,14 @@ body::-webkit-scrollbar-thumb {
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
     }
+    transform: perspective(500px) rotatey(-35deg);
+    -webkit-transform: perspective(500px) rotatey(-35deg);
+    -moz-transform: perspective(500px) rotatey(-35deg);
+    -ms-transform: perspective(500px) rotatey(-35deg);
+    -o-transform: perspective(500px) rotatey(-35deg);
 }
+
+
 
 
 
