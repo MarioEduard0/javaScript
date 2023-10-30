@@ -8,7 +8,9 @@ var textArray = [];
 
 var allPokemonData = [];
 
-let isTypesVisible = false;
+var isTypesVisible = false;
+
+var delete_pokemon_button = false
 
 toggleButton.addEventListener("click", () => {
   if (!isTypesVisible) {
@@ -111,6 +113,7 @@ function addCards(pokemonArray, index) {
       <div class="poke-img ${pokemonArray[index].types[0].type.name}">
           <img src="${pokemonArray[index].sprites.other["official-artwork"]["front_default"]
     }" alt="" id="pokemon-image">
+    <button class="pokemon-delete ${pokemonArray[index].types[0].type.name}">&times;</button>
       </div>
       <div class="poke-card">
           <h2 class="pokemon-name">${pokemonArray[index].name}</h2>
@@ -132,7 +135,20 @@ function addCards(pokemonArray, index) {
       </div>
   `;
 
-  // Agregar la nueva instancia al contenedor
+
+  const buttonDelete = newPokemonInstance.querySelector('.pokemon-delete');
+
+  // Agregar un evento al botón
+  buttonDelete.addEventListener('click', (e) => {
+    e.stopPropagation();
+    newPokemonInstance.classList.add('deleted');
+
+    setTimeout(() => {
+      containerPokemonCards.removeChild(newPokemonInstance);
+      allPokemonData.splice(index, 1);
+    }, 300);
+  });
+
   containerPokemonCards.appendChild(newPokemonInstance);
   applyRotationEffect(newPokemonInstance, pokemonArray[index]);
 }
@@ -167,7 +183,10 @@ function applyRotationEffect(card, pokemon_data) {
   });
 
   card.addEventListener("click", () => {
-    createPopupCard(pokemon_data);
+
+    if (!delete_pokemon_button) {
+      createPopupCard(pokemon_data);
+    }
   });
 }
 
@@ -282,13 +301,16 @@ function createPopupCard(pokemonData) {
     }, 300);
   });
 
-  const statsNames = popupCard.querySelector(".graphic-stats");
   const progressBars = popupCard.querySelectorAll("progress");
+  const statsNames = popupCard.querySelector(".card-poke-stats");
   const totalValue = popupCard.querySelector(".stats-total");
+  const info_poke_card = popupCard.querySelector(".info-pokemon-card");
 
 
   var auxTotal = totalValue.textContent;
   var animationEnded = true;
+  var auxTotalMin = 0;
+  totalValue.textContent = "";
   var originalValues = [];
 
   // Almacenar los valores originales de las barras de progreso
@@ -296,43 +318,43 @@ function createPopupCard(pokemonData) {
     originalValues.push(progressBar.value);
 
 
-    if (animationEnded) {
-      statsNames.addEventListener("mouseenter", () => {
-        animationEnded=false;
-        var auxTotalMin = 0;
-        totalValue.textContent = "";
-        progressBar.value = 0; // Establecer el valor de la barra de progreso en 0
-        let increment = originalValues[index] / 50; // Incremento por iteración
+    progressBar.value = 0; // Establecer el valor de la barra de progreso en 0
+    let increment = originalValues[index] / 50; // Incremento por iteración
 
-        // Usar setInterval para incrementar gradualmente el valor de la barra
-        const interval = setInterval(() => {
-          if (progressBar.value < originalValues[index]) {
-            progressBar.value += increment;
-          } else {
-            clearInterval(interval); // Detener la animación cuando se alcanza el valor original
-          }
-        }, 20); // Intervalo de tiempo para cada iteración (ajustable)
+    // Usar setInterval para incrementar gradualmente el valor de la barra
 
-        const interval2 = setInterval(() => {
-          if (auxTotalMin < auxTotal) {
-            auxTotalMin += 1;
-            totalValue.textContent = auxTotalMin;
+    setTimeout(() => {
 
-          } else {
-            clearInterval(interval2); // Detener la animación cuando se alcanza el valor original
-            animationEnded=true;
-          }
-        }, 1);
-      });
-    }
+      const interval = setInterval(() => {
+        if (progressBar.value < originalValues[index]) {
+          progressBar.value += increment;
+        } else {
+          clearInterval(interval); // Detener la animación cuando se alcanza el valor original
+        }
+      }, 20); // Intervalo de tiempo para cada iteración (ajustable)
 
+      const interval2 = setInterval(() => {
+        if (auxTotalMin < auxTotal) {
+          auxTotalMin += 6;
+          totalValue.textContent = auxTotalMin;
+
+        } else {
+          clearInterval(interval2); // Detener la animación cuando se alcanza el valor original
+          animationEnded = true;
+          totalValue.textContent = auxTotal
+        }
+      }, 50);
+    }, 1500);
 
   });
 
-
-
-
 }
+
+
+
+
+
+
 
 // loafPokemons();
 
