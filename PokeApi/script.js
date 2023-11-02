@@ -350,6 +350,20 @@ function createPopupCard(pokemonData) {
 
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  var body = document.body;
+  var button = document.querySelectorAll("svg")[0];
+  var line = document.querySelectorAll("line");
+
+  button.addEventListener("click", function () {
+      if (document.body.classList.contains("menu-open")) {
+          body.classList.remove("menu-open");
+          return;
+      }
+      body.classList.add("menu-open");
+  });
+});
+
 
 
 
