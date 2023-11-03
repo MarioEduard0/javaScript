@@ -511,22 +511,19 @@ body::-webkit-scrollbar-thumb {
 
 
 
-.container-pokemon-cards:-webkit-scrollbar-track,
-.new-pokemon-lef-bar::-webkit-scrollbar-track {
+*:-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: transparent;
 }
 
-.container-pokemon-cards::-webkit-scrollbar,
-.new-pokemon-lef-bar::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 10px;
     height: 0px;
     background-color: transparent;
 
 }
 
-.container-pokemon-cards::-webkit-scrollbar-thumb,
-.new-pokemon-lef-bar::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: transparent;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -932,8 +929,8 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     display: grid;
     grid-template-columns: 20%, 80%;
-    align-items: center;
-
+    justify-content: space-around;
+    align-items: start;
 }
 
 .new-pokemon-lef-bar {
@@ -943,11 +940,40 @@ body::-webkit-scrollbar-thumb {
 }
 
 .open-menu {
-    border: 0px;
+    border: 1px solid var(--mustard-color);
     margin: 10px;
-    width: 10%;
-    height: 5%;
+    width: 50px;
+    height: 20px;
     background-color: var(--soft-dark-color);
+    color: var(--mustard-color);
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.open-menu:active {
+    translate: 0px 2px;
+    background-color: var(--grey-color);
+    color: black;
+}
+
+.creation-box {
+    width: 100%;
+    height: 50vh;
+    grid-column-start: 2;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border: 1px solid black;
 }
 
 
@@ -955,7 +981,7 @@ body::-webkit-scrollbar-thumb {
 
 
 
-@media (width<380px) {
+@media (width<400px) {
     .toggle-types {
         & p {
             display: none;
@@ -975,7 +1001,6 @@ body::-webkit-scrollbar-thumb {
 
     .info-pokemon-card {
         transform: perspective(500px) rotateX(0deg);
-        ;
         -webkit-transform: perspective(500px) rotateX(0deg);
         -moz-transform: perspective(500px) rotateX(0deg);
         -ms-transform: perspective(500px) rotateX(0deg);
@@ -984,16 +1009,67 @@ body::-webkit-scrollbar-thumb {
 
     .card-poke-stats {
         transform: perspective(500px) rotateX(0deg);
-
         -webkit-transform: perspective(500px) rotateX(0deg);
         -moz-transform: perspective(500px) rotateX(0deg);
         -ms-transform: perspective(500px) rotateX(0deg);
         -o-transform: perspective(500px) rotateX(0deg);
     }
 
+    .new-pokemon-lef-bar {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .new-pokemon-lef-bar>div {
+
+        padding: 0px;
+
+        & p {
+            display: none;
+        }
+    }
+
+}
 
 
+@media (width<900px) {
 
+    .creation-box {
+        grid-template-rows: repeat(2, 1fr);
+        justify-content: center;
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    .id-box{
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        & p{
+            text-align: start;
+        }
+
+        & input{
+            width: 80%;
+        }
+    }
+
+    .stats-box {
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+
+        & p{
+            text-align: start;
+        }
+
+        & input{
+            height: 20px;
+            width: 90%;
+        }
+    }
 }
 
 @media (width<800px) {
@@ -1033,6 +1109,8 @@ body::-webkit-scrollbar-thumb {
         -ms-transform: perspective(500px) rotateX(0deg);
         -o-transform: perspective(500px) rotateX(0deg);
     }
+
+
 
 
 
