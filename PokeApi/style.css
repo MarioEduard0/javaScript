@@ -1066,7 +1066,6 @@ body::-webkit-scrollbar-thumb {
         }
 
         & input{
-            height: 20px;
             width: 90%;
         }
     }
