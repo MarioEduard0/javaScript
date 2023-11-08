@@ -1,6 +1,5 @@
 const toggleButton = document.getElementById("toggle-types");
 const typesContainer = document.querySelector(".types");
-const divsInsideTypes = typesContainer.querySelectorAll("div");
 
 const container_pokemon_cards = document.getElementById("pokemon");
 
@@ -351,12 +350,21 @@ function createPopupCard(pokemonData) {
 }
 
 
+const button_img = document.getElementById("img-preview-button");
+const img_preview = document.getElementById("img-preview");
+const img_preview_url = document.getElementById("img-preview-url");
+
+console.log(button_img);
+
+button_img.addEventListener("mouseenter", () =>{
+button_img.style.backgroundColor="red";
+
+});
 
 
 
 
 
-
-loafPokemons();
+// loafPokemons();
 
 // addCards();
