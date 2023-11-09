@@ -356,13 +356,27 @@ const img_preview_url = document.getElementById("img-preview-url");
 
 console.log(button_img);
 
-button_img.addEventListener("mouseenter", () =>{
-button_img.style.backgroundColor="red";
+button_img.addEventListener("mouseenter", () => {
+  button_img.style.backgroundColor = "red";
 
 });
 
 
+const hpRange = document.getElementById('hpRange');
+const hpValue = document.getElementById('hpValue');
 
+const atkRange = document.getElementById('atkRange');
+const atkValue = document.getElementById('atkValue');
+
+
+
+hpRange.addEventListener('input', function () {
+  hpValue.textContent = hpRange.value;
+});
+
+atkRange.addEventListener('input', function () {
+  atkValue.textContent = atkRange.value;
+});
 
 
 // loafPokemons();
