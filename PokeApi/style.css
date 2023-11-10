@@ -911,33 +911,46 @@ body::-webkit-scrollbar-thumb {
 }
 
 .add-pokemon-container {
+    opacity: 1;
     z-index: 12;
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.247);
+    background-color: rgba(217, 212, 255, 0);
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
     left: 50%;
+    transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    -o-transition: all 0.5s ease-in-out, opacity 0.3s ease-in-out;
     transform: translate(-50%, -50%);
-
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .new-pokemon {
+    opacity: 1;
     background-color: white;
     width: 100%;
     padding: 20px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 20% 1fr 5%;
     transform: scale(0.8);
     -webkit-transform: scale(0.8);
     -moz-transform: scale(0.8);
     -ms-transform: scale(0.8);
     -o-transform: scale(0.8);
-    box-shadow: 1px 1px 20px 30px rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px 5px rgb(255, 255, 255);
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
 }
 
 .new-pokemon-lef-bar {
@@ -945,7 +958,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: start;
     width: 100%;
-    height: 100vh;
+    height: 72vh;
     overflow: auto;
     float: left;
 
@@ -955,22 +968,21 @@ body::-webkit-scrollbar-thumb {
 
 
 .creation-box {
-    width: 350%;
-    height: 50vh;
-    padding: 40px 20px;
+    width: 70%;
+    height: auto;
+    padding: 40px 100px;
     grid-column-start: 2;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
+    display: flex;
+    overflow: auto;
     box-shadow: 1px 1px 16px #aba9a9,
         -1px -1px 20px #ffffffaa;
 
-
-
-
-
-
     & input[type=text] {
+        margin: 12px 15px;
+        height: 25px;
+        width: 100px;
+        padding-left: 10px;
+        padding-right: 10px;
         border: 1px solid var(--grey-color);
         border-radius: 4px;
         -webkit-border-radius: 4px;
@@ -1009,6 +1021,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+.poke-measures {
+    display: flex;
+    flex-direction: row;
+}
+
 .id-box {
     width: 80%;
     justify-content: center;
@@ -1029,11 +1046,11 @@ body::-webkit-scrollbar-thumb {
 
 
 input[type="range"] {
+    -webkit-appearance: none;
     margin-top: 15px;
     margin-right: 20px;
     margin-left: 20px;
     height: 21px;
-    -webkit-appearance: none;
     background-color: var(--grey-color);
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -1051,16 +1068,9 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px;
-    /*Anchodelcontroldeslizante*/
     height: 20px;
-    /*Alturadelcontroldeslizante*/
     background-color: var(--yellow-color);
-    /*Colordefondodelcontroldeslizante*/
-
-    /*Eliminarelbordedelcontroldeslizante*/
-    /*Radiodebordeparaqueseauncírculo*/
     cursor: pointer;
-    /*Cambiarelcursoralpuntero*/
     border-radius: 5;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5;
@@ -1071,6 +1081,38 @@ input[type="range"]::-webkit-slider-thumb {
 /* Cambiar el color del control deslizante cuando se mueve */
 input[type="range"]::-webkit-slider-thumb:hover {
     background-color: var(--soft-dark-color);
+}
+
+
+.close-creation-box {
+margin: -20px 0px;
+width: 50px;
+height: 50px;
+
+    & .close-button-creation {
+        text-align: center;
+        transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
+        -o-transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    & .close-button-creation:hover {
+        background-color: var(--soft-dark-color);
+        color: white;
+    }
+
+    & .close-button-creation:active {
+        background-color: var(--dark-color);
+        color: black;
+        translate: 0px 4px;
+    }
 }
 
 @media (width<400px) {
@@ -1088,7 +1130,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .container-pokemon-cards {
         margin-top: -100px;
         scale: 0.7;
-
     }
 
     .info-pokemon-card {
@@ -1122,6 +1163,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
 }
+
 
 
 @media (width<900px) {
@@ -1200,8 +1242,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
         -ms-transform: perspective(500px) rotateX(0deg);
         -o-transform: perspective(500px) rotateX(0deg);
     }
-
-
 
 
 

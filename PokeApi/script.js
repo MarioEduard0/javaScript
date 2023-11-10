@@ -1,5 +1,6 @@
 const toggleButton = document.getElementById("toggle-types");
 const typesContainer = document.querySelector(".types");
+const divsInsideTypes = typesContainer.querySelectorAll("div");
 
 const container_pokemon_cards = document.getElementById("pokemon");
 
@@ -10,6 +11,99 @@ var allPokemonData = [];
 var isTypesVisible = false;
 
 var delete_pokemon_button = false
+
+
+newPokemonCreationEvents();
+
+
+function newPokemonCreationEvents() {
+
+
+  const hpRange = document.getElementById('hpRange');
+  const hpValue = document.getElementById('hpValue');
+
+  const atkRange = document.getElementById('atkRange');
+  const atkValue = document.getElementById('atkValue');
+
+  const defRange = document.getElementById('defRange');
+  const defValue = document.getElementById('defValue');
+
+  const stkRange = document.getElementById('stkRange');
+  const stkValue = document.getElementById('stkValue');
+
+  const sefRange = document.getElementById('sefRange');
+  const sefValue = document.getElementById('sefValue');
+
+  const spdRange = document.getElementById('spdRange');
+  const spdValue = document.getElementById('spdValue');
+
+
+  const colseCreationBox = document.getElementById('close-button-creation');
+  const creationBox = document.getElementById('add-pokemon-container');
+  const creationBoxData = document.getElementById('new-pokemon');
+
+  hpRange.addEventListener('input', function () {
+    hpValue.textContent = hpRange.value;
+  });
+
+  atkRange.addEventListener('input', function () {
+    atkValue.textContent = atkRange.value;
+  });
+
+  defRange.addEventListener('input', function () {
+    defValue.textContent = defRange.value;
+  });
+
+  stkRange.addEventListener('input', function () {
+    stkValue.textContent = stkRange.value;
+  });
+
+  sefRange.addEventListener('input', function () {
+    sefValue.textContent = sefRange.value;
+  });
+
+  spdRange.addEventListener('input', function () {
+    spdValue.textContent = spdRange.value;
+  });
+
+
+  colseCreationBox.addEventListener('click', function () {
+    creationBox.style.opacity = 0;
+    setTimeout(() => {
+      creationBox.style.display = "none";
+    }, 400);
+
+    setTimeout(() => {
+      creationBoxData.style.opacity = 0;
+      creationBoxData.style.display = "none";
+      creationBoxData.style.transform = "scale(0)";
+    }, 800);
+  });
+
+
+  const addNewPokemon = document.getElementById('add-pokemon');
+
+  addNewPokemon.addEventListener('click', function () {
+    creationBox.style.display = "flex";
+
+    setTimeout(() => {
+      creationBox.style.opacity = 1;
+    }, 400);
+
+    setTimeout(() => {
+      creationBoxData.style.display = "flex";
+
+      setTimeout(() => {
+        creationBoxData.style.opacity = 1;
+        creationBoxData.style.transform = "scale(0.8)";
+      }, 400);
+    }, 500);
+  });
+
+}
+
+
+
 
 toggleButton.addEventListener("click", () => {
   if (!isTypesVisible) {
@@ -350,33 +444,7 @@ function createPopupCard(pokemonData) {
 }
 
 
-const button_img = document.getElementById("img-preview-button");
-const img_preview = document.getElementById("img-preview");
-const img_preview_url = document.getElementById("img-preview-url");
 
-console.log(button_img);
-
-button_img.addEventListener("mouseenter", () => {
-  button_img.style.backgroundColor = "red";
-
-});
-
-
-const hpRange = document.getElementById('hpRange');
-const hpValue = document.getElementById('hpValue');
-
-const atkRange = document.getElementById('atkRange');
-const atkValue = document.getElementById('atkValue');
-
-
-
-hpRange.addEventListener('input', function () {
-  hpValue.textContent = hpRange.value;
-});
-
-atkRange.addEventListener('input', function () {
-  atkValue.textContent = atkRange.value;
-});
 
 
 // loafPokemons();
