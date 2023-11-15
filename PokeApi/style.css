@@ -915,7 +915,7 @@ body::-webkit-scrollbar-thumb {
     z-index: 12;
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 201vh;
     background-color: rgba(217, 212, 255, 0);
     backdrop-filter: blur(20px);
     position: absolute;
@@ -931,21 +931,26 @@ body::-webkit-scrollbar-thumb {
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
+    
 }
 
 .new-pokemon {
+    
+    margin-top: 230px;
     opacity: 1;
     background-color: white;
     width: 100%;
+    height: 80%;
     padding: 20px;
     display: grid;
     grid-template-columns: 20% 1fr 5%;
+    grid-template-rows: repeat(2, 1fr);
     transform: scale(0.8);
     -webkit-transform: scale(0.8);
     -moz-transform: scale(0.8);
     -ms-transform: scale(0.8);
     -o-transform: scale(0.8);
-    box-shadow: 1px 1px 5px 5px rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px 5px rgba(118, 118, 118, 0.521);
     transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
@@ -958,18 +963,20 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: start;
     width: 100%;
-    height: 72vh;
-    overflow: auto;
+    height: 100%;
+    overflow: scroll;
     float: left;
 
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 
 
 
 .creation-box {
-    width: 80%;
-    height: auto;
+    width: 75%;
+    height: 400px;
     padding: 40px 100px;
     grid-column-start: 2;
     display: grid;
@@ -1041,7 +1048,6 @@ body::-webkit-scrollbar-thumb {
 
 
 .stats-box-new {
-    color: white;
     padding: 40px 25px;
     width: 100%;
     height: 100%;
@@ -1050,6 +1056,10 @@ body::-webkit-scrollbar-thumb {
     grid-template-columns: 10% 80% 10%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    & p{
+        margin: 0px;
+    }
 }
 
 
@@ -1112,11 +1122,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 
 .close-creation-box {
-    margin: -20px 0px;
+    margin: -30px 15px;
     width: 50px;
     height: 50px;
 
+    grid-column-start: 3;
+    grid-row-start: 1;
+
     & .close-button-creation {
+        padding: 5px 20px;
         text-align: center;
         transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
         -webkit-transition: all 0.4s ease-in-out, translate 0.2s ease-in-out;
@@ -1140,6 +1154,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
         color: black;
         translate: 0px 4px;
     }
+}
+
+
+.created-pokemon{
+    margin: 60px 0px;
+    background-color: rgb(171, 171, 171);
+    width: 95%;
 }
 
 @media (width<400px) {
@@ -1175,19 +1196,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
         -o-transform: perspective(500px) rotateX(0deg);
     }
 
-    .new-pokemon-lef-bar {
-        justify-content: center;
-        align-items: center;
-    }
-
-    .new-pokemon-lef-bar>div {
-
-        padding: 0px;
-
-        & p {
-            display: none;
-        }
-    }
+ 
 
 }
 
@@ -1270,6 +1279,28 @@ input[type="range"]::-webkit-slider-thumb:hover {
         -o-transform: perspective(500px) rotateX(0deg);
     }
 
+ 
 
 
+}
+
+
+
+@media (width<1200px) {
+
+   .creation-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    overflow: hidden;
+   }
+
+
+
+   .stats-box{
+
+   }
+    
 }

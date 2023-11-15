@@ -447,6 +447,6 @@ function createPopupCard(pokemonData) {
 
 
 
-// loafPokemons();
+loafPokemons();
 
 // addCards();
